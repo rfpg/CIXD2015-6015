@@ -1,0 +1,120 @@
+/* kit.css: shared styles for the CIXD 2015 kit pages. GW navy and buff on white. */
+
+:root {
+  --navy: #033c5a;
+  --navy-deep: #022a40;
+  --buff: #aa9868;
+  --cream: #f3efe6;
+  --ink: #1f2933;
+  --muted: #5b6470;
+  --line: #d9d4c7;
+  --white: #ffffff;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.55;
+}
+
+.wrap { max-width: 52rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+.crumbs { font-size: 0.95rem; color: var(--muted); margin: 0; }
+.crumbs a { color: var(--navy); }
+
+h1 {
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: 0.5rem 0 1rem;
+  max-width: 24ch;
+}
+.lead { font-size: 1.2rem; max-width: 42rem; margin: 0 0 1.5rem; }
+
+h2 { color: var(--navy); font-size: 1.45rem; margin: 2.75rem 0 0.75rem; }
+h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+p, li { max-width: 68ch; }
+
+a { color: var(--navy); }
+:focus-visible { outline: 3px solid var(--buff); outline-offset: 2px; }
+
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; margin: 1rem 0; }
+th { text-align: left; background: var(--navy); color: var(--white); padding: 0.6rem 0.75rem; font-weight: 600; }
+td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { font-weight: 600; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--cream);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+pre {
+  background: var(--cream);
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  overflow: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+kbd {
+  font-family: var(--font);
+  font-size: 0.9em;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.05em 0.45em;
+  box-shadow: inset 0 -1px 0 var(--line);
+}
+
+ol.steps { padding-left: 1.4rem; }
+ol.steps li { margin-bottom: 1rem; }
+ul.checks { list-style: none; padding: 0; }
+ul.checks li { padding: 0.45rem 0 0.45rem 2rem; position: relative; border-bottom: 1px solid var(--line); }
+ul.checks li::before {
+  content: "";
+  position: absolute; left: 0.25rem; top: 0.75rem;
+  width: 1rem; height: 1rem;
+  border: 2px solid var(--navy); border-radius: 3px;
+}
+
+.panel { background: var(--cream); border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+.panel p:last-child { margin-bottom: 0; }
+
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+.pager .soon { color: var(--muted); }
+
+/* Kit index */
+.modules { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0.5rem; }
+.modules li {
+  display: grid; grid-template-columns: 2.5rem 1fr auto; gap: 0.75rem; align-items: baseline;
+  padding: 0.85rem 1rem; background: var(--cream); border-radius: 6px;
+}
+.modules .num { font-weight: 700; color: var(--navy); }
+.modules .when { color: var(--muted); font-size: 0.9rem; white-space: nowrap; }
+@media (max-width: 40rem) {
+  .modules li { grid-template-columns: 2.5rem 1fr; }
+  .modules .when { grid-column: 2; }
+}
+.modules a { font-weight: 600; text-decoration: none; }
+.modules a:hover { text-decoration: underline; }
+.modules .soon { color: var(--muted); font-weight: 600; }
+.modules .what { display: block; font-weight: 400; color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

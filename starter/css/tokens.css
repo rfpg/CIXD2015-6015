@@ -1,0 +1,53 @@
+/* tokens.css: your design system as CSS custom properties.
+   This is Figma's Variables panel, in text.
+   Edit the PRIMITIVES to match your Assignment 1 palette.
+   Components only ever use SEMANTIC tokens, never raw values. */
+
+:root {
+  /* 1. Primitives: raw values, named by what they are */
+  --ink-900:   #14161a;
+  --ink-800:   #23262d;
+  --paper-50:  #f6f5f1;
+  --paper-100: #ebe9e2;
+  --blue-700:  #1b2aa6;
+  --blue-500:  #2a3de8;
+  --blue-300:  #8d98ff;
+  --gray-500:  #6e7079;
+  --gray-300:  #a3a6b0;
+
+  /* 2. Semantic tokens: named by what they are FOR. Components use these. */
+  --color-bg:       var(--paper-50);
+  --color-surface:  var(--paper-100);
+  --color-text:     var(--ink-900);
+  --color-muted:    var(--gray-500);
+  --color-accent:   var(--blue-500);
+
+  /* 3. Type: one display face, one text face, a scale that steps by 1.25 */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-text: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --step-0: 1rem;       /* 16px body */
+  --step-1: 1.25rem;
+  --step-2: 1.563rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+  --step-display: clamp(2.75rem, 1.5rem + 7vw, 6.5rem); /* the headline grows with the screen */
+
+  /* 4. Space: an 8-point scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+
+  --radius: 4px;
+}
+
+/* 5. A mode. Redefine SEMANTIC tokens only; primitives never change.
+   Switched on by data-theme="dark" on the <html> element (see js/app.js). */
+[data-theme="dark"] {
+  --color-bg:      var(--ink-900);
+  --color-surface: var(--ink-800);
+  --color-text:    var(--paper-50);
+  --color-muted:   var(--gray-300);
+  --color-accent:  var(--blue-300);
+}

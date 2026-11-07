@@ -1,0 +1,79 @@
+/* base.css: the page itself. A small reset, the type, and the cover layout.
+   Everything here points at tokens.css; you'll rarely edit this before Sprint 1. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-text);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  transition: background-color 200ms ease-out, color 200ms ease-out;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+h1, p, blockquote, figure { margin: 0; }
+
+/* The cover is one column, about 75 characters wide, with a consistent gap between rows.
+   (In Figma: a vertical auto-layout frame with gap = space-4.) */
+.cover {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: var(--space-3);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.masthead { display: flex; justify-content: space-between; align-items: baseline; }
+.masthead-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--step-3);
+  letter-spacing: -0.02em;
+}
+
+.hero img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--step-display);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.six-words {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-2);
+  color: var(--color-accent);
+}
+
+/* Two quotes: stacked on a phone, side by side from 40rem up. */
+.quotes { display: grid; gap: var(--space-3); }
+@media (min-width: 40rem) { .quotes { grid-template-columns: 1fr 1fr; } }
+.quote { padding: var(--space-3); background: var(--color-surface); border-radius: var(--radius); }
+.quote p { font-size: var(--step-1); line-height: 1.35; }
+.quote footer { margin-top: var(--space-1); color: var(--color-muted); font-size: 0.875rem; }
+
+.byline {
+  display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-surface);
+  color: var(--color-muted);
+}
+.byline p:first-child { color: var(--color-text); font-weight: 600; }
+
+/* Quality floor: visible keyboard focus, and no motion for people who've asked for none. */
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
